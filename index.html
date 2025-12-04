@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation 1</title>
+    <style>
+        .animate {
+            flex: auto;
+            margin-top: 200px;
+            margin-left: 100px;
+            justify-items: center;
+            justify-content: center;
+            width: 500px;
+            height: 300px;
+            position: relative;
+            background: rgb(71, 67, 67);
+            color: white;
+            border-radius: 10px;
+        }
+        .animate h1 {
+            padding: 20px;
+            text-align: center;
+        }
+        @property --angle {
+            syntax: '<angle>';
+                initial-value: 0deg;
+                inherits: true;
+        }
+        .animate::after{
+            content: '';
+                height: 100%;
+                width: 100%;
+            background-image: conic-gradient(from var(--angle), transparent 90%, red, blue, green, pink);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: -1;
+            padding: 10px;
+            animation: 10s spin linear infinite;
+            border-radius: 10px;
+        }
+
+        @keyframes spin {
+            
+            to {
+                --angle: 360deg;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="animate">
+        <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur expedita quia consequuntur quam, deleniti autem? Perferendis quos nostrum dicta beatae.</h1>
+    </div>
+</body>
+</html>

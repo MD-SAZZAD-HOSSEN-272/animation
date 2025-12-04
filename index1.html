@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On-site Card</title>
+
+<style>
+    body {
+        background: #f5f6f7;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .service-card {
+        width: 320px;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card:hover {
+        background: green;
+    }
+
+    .service-card:hover .service-title,
+.service-card:hover .service-text {
+    color: gray;
+}
+
+
+    
+    
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+    }
+    
+ 
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .service-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 10px 0 6px;
+        color: #111;
+    }
+
+    .service-text {
+        font-size: 15px;
+        color: #444;
+        line-height: 1.5;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="service-card">
+    <img class="service-icon" src="https://static1.squarespace.com/static/691db02c48e29540d78ff155/t/69243d7aaebe4a53cb518ccc/1763982714437/staff.png">
+
+    <h3 class="service-title">On-site</h3>
+
+    <p class="service-text">
+        On-site fueling for fleets, trucks, and heavy equipment
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container p {
+            font-size: 30px;
+            letter-spacing: 5px;
+            border-right: 5px solid purple;
+
+            overflow: hidden;
+            display: inline-block;
+            white-space: nowrap;
+            animation: cursor .3s step-end infinite alternate;
+        }
+
+      
+
+        @keyframes cursor {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p id="text"></p>
+    </div>
+
+    <script>
+        const sentences = [
+            "learn typing animation",
+            "this is second sentence",
+            "typing effect with multiple lines",
+            "javascript makes it possible"
+        ];
+
+        let index = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 100;
+
+        const typeEffect = () => {
+            const current = document.getElementById('text');
+
+            const currents = sentences[index]
+            if (isDeleting === false) {
+                charIndex++
+                current.textContent = currents.slice(0, charIndex)
+                
+            } else {
+                charIndex--
+                current.textContent = currents.slice(0, charIndex)
+            }
+
+            if (charIndex === currents.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 500);
+                return;
+            }
+
+            console.log(charIndex)
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                index = (index + 1) % sentences.length; 
+            }
+
+            setTimeout(typeEffect, isDeleting ? 60 : speed);
+        }
+
+        typeEffect()
+
+
+    </script>
+</body>
+
+</html>

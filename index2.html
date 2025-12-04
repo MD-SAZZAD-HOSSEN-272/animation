@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phishing Email Detector</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f7f7f7;
+        }
+
+        .email-box {
+            width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .highlight {
+            background-color: yellow;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+
+        #score {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🎯 Phishing Email Detector Game</h2>
+    <p>ভুল অংশগুলোতে ক্লিক করো!</p>
+
+    <div class="email-box">
+        <p>From: <span class="clickable" id="wrong-email">support@paypa1.com</span></p>
+        <p>Subject: Urgent! Your account will be <span class="clickable" id="wrong-spelling">susspended</span></p>
+
+        <p>Hello User,</p>
+        <p>
+            We noticed unusual activity on your account.
+            Please click the link below to verify your identity:
+        </p>
+
+        <p>
+            <a class="clickable" id="wrong-link">http://paypal-security-check.xyz/verify</a>
+        </p>
+
+        <p>Thank you,<br>PayPal Team</p>
+    </div>
+
+    <div id="score">Score: 0 / 3</div>
+
+    <script>
+
+        let score = 0;
+        let found = {
+            email: false,
+            spelling: false,
+            link: false
+        };
+
+        document.getElementById("wrong-email").addEventListener("click", function () {
+            if (!found.email) {
+                this.classList.add("highlight");
+                score++;
+                found.email = true;
+                updateScore();
+            }
+        });
+
+        document.getElementById("wrong-spelling").addEventListener("click", function () {
+            if (!found.spelling) {
+                this.classList.add("highlight");
+                score++;
+                found.spelling = true;
+                updateScore();
+            }
+        });
+
+        document.getElementById("wrong-link").addEventListener("click", function () {
+            if (!found.link) {
+                this.classList.add("highlight");
+                score++;
+                found.link = true;
+                updateScore();
+            }
+        });
+
+        function updateScore() {
+            document.getElementById("score").innerHTML = `Score: ${ score / 3 }`;
+
+            if (score === 3) {
+                alert("✔️ Well Done! You have found all phishing indicators.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
