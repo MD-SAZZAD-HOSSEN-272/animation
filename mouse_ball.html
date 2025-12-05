@@ -1,0 +1,134 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor Ball Effect</title>
+
+    <style>
+        /* Remove default cursor if you want */
+        body {
+            cursor: none;
+        }
+
+        /* Cursor Ball Style */
+        .cursor-ball {
+            width: 15px;
+            height: 15px;
+            margin: 5px;
+            background: #ff4747; /* ball color */
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s linear;
+            z-index: 9999;
+        }
+
+        .cursor-ball::before {
+            content: '';
+            height: 20px;
+            width: 20px;
+            border: red solid;
+            transition: all;
+            position: relative;
+            top: -50%;
+            left: -50%;
+        }
+        .border-box {
+            border: red solid;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    The floating cursor ball -->
+    <!-- <div class="border-box">
+        <div class="cursor-ball"></div>
+    </div>
+
+    <h1 style="text-align:center; margin-top:50px;">Cursor Ball Test Page</h1>
+    <p style="text-align:center;">Move your mouse to see the ball follow the cursor.</p>
+
+    <script>
+        const ball = document.querySelector('.cursor-ball');
+        const borderBox = document.querySelector('.border-box')
+
+        document.addEventListener('mousemove', (e) => {
+            ball.style.left = `${e.clientX}px`;
+            ball.style.top = `${e.clientY}px`;
+            borderBox.style.left= e.clientX + 'px';
+            borderBox.style.top= e.clientY + 'px';
+        });
+    </script>
+</body>
+</html> --> 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor Ball Effect</title>
+
+    <style>
+       
+        .cursor-ball {
+            width: 10px;
+            height: 10px;
+            background: #a16102;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+       
+        .cursor-ball::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #a16102;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-ball"></div>
+
+    <h1 style="text-align:center; margin-top:50px;">Cursor Ball Test Page</h1>
+    <p style="text-align:center;">Move your mouse to see the ball follow the cursor.</p>
+
+    <script>
+        const ball = document.querySelector('.cursor-ball');
+
+        document.addEventListener('mousemove', (e) => {
+            ball.style.left = `${e.clientX + 10}px`;
+            ball.style.top = `${e.clientY + 20}px`;
+            ball.style.opacity = 1;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            ball.style.opacity = 0;
+        })
+
+        document.addEventListener('mouseenter', () => {
+            ball.style.opacity = 1;
+        })
+    </script>
+</body>
+</html>
+
