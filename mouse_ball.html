@@ -47,7 +47,7 @@
 <body>
 
     The floating cursor ball -->
-    <!-- <div class="border-box">
+<!-- <div class="border-box">
         <div class="cursor-ball"></div>
     </div>
 
@@ -66,19 +66,19 @@
         });
     </script>
 </body>
-</html> --> 
+</html> -->
 
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cursor Ball Effect</title>
 
     <style>
-       
         .cursor-ball {
             width: 10px;
             height: 10px;
@@ -87,10 +87,32 @@
             position: fixed;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            z-index: 9999;
+            z-index: 9999; 
+
         }
 
-       
+        @keyframes floatWobble {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+        }
+
+        .animate {
+            animation: floatWobble 2s linear infinite;
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+
+
         .cursor-ball::before {
             content: '';
             position: absolute;
@@ -101,10 +123,11 @@
             border: 2px solid #a16102;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            
+
         }
     </style>
 </head>
+
 <body>
 
     <div class="cursor-ball"></div>
@@ -114,11 +137,19 @@
 
     <script>
         const ball = document.querySelector('.cursor-ball');
+        let removeId;
 
         document.addEventListener('mousemove', (e) => {
             ball.style.left = `${e.clientX + 10}px`;
             ball.style.top = `${e.clientY + 20}px`;
             ball.style.opacity = 1;
+            ball.classList.add('animate');
+
+            clearTimeout(removeId)
+
+            removeId = setTimeout(() => {
+                ball.classList.remove('animate')
+            }, 500)
         });
 
         document.addEventListener('mouseleave', () => {
@@ -130,5 +161,5 @@
         })
     </script>
 </body>
-</html>
 
+</html>
